@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Strategyo.Results</AssemblyName>
+        <RootNamespace>Strategyo.Results</RootNamespace>
+    </PropertyGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\Strategyo\Strategyo.csproj" />
+  </ItemGroup>
+    
+</Project>

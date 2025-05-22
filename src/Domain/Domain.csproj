@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>App.InvoisysTest.Domain</AssemblyName>
+        <RootNamespace>App.InvoisysTest.Domain</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ThirdParty\Strategyo.Results\Strategyo.Results.csproj" />
+      <ProjectReference Include="..\ThirdParty\Strategyo\Strategyo.csproj" />
+    </ItemGroup>
+
+</Project>

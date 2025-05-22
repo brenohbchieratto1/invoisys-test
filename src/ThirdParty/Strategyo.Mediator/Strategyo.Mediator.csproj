@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Strategyo.Mediator</AssemblyName>
+        <RootNamespace>Strategyo.Mediator</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Strategyo.Results\Strategyo.Results.csproj" />
+        <ProjectReference Include="..\Strategyo\Strategyo.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    </ItemGroup>
+    
+</Project>
