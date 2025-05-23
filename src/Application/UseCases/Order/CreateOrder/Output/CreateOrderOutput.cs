@@ -3,5 +3,5 @@
 public class CreateOrderOutput
 {
     public Ulid OrderId { get; set; }
-    public Ulid CorrelationId { get; set; }
+    public Guid CorrelationId { get; set; }
 }

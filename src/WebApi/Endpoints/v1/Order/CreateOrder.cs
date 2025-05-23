@@ -16,7 +16,7 @@ public class CreateOrder : BaseOrder
     {
         app
            .MapPost("", async (
-                        [FromHeader] string correlationId,
+                        [FromHeader] Guid correlationId,
                         [FromBody] CreateOrderRequest req,
                         [FromServices] IMediator mediator,
                         CancellationToken ct) =>

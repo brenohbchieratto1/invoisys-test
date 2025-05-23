@@ -2,21 +2,21 @@
 
 public class IdempotenceKey
 {
-    public IdempotenceKey(Ulid correlationId, string inputTypeName, string outputTypeName)
+    public IdempotenceKey(Guid correlationId, string inputTypeName, string outputTypeName)
     {
         CorrelationId = correlationId;
         OutputTypeName = outputTypeName;
         InputTypeName = inputTypeName;
     }
 
-    public IdempotenceKey(Ulid correlationId, string inputTypeName)
+    public IdempotenceKey(Guid correlationId, string inputTypeName)
     {
         CorrelationId = correlationId;
         OutputTypeName = "EmptyOutput";
         InputTypeName = inputTypeName;
     }
 
-    public Ulid CorrelationId { get; }
+    public Guid CorrelationId { get; }
     public string OutputTypeName { get; }
     public string InputTypeName { get; }
 

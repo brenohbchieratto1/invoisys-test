@@ -8,8 +8,8 @@ public interface IRequest : IBaseRequest
 {
     IdempotenceKey IdempotenceKey { get; }
     bool IgnoreIdempotence { get; }
-    public Ulid CorrelationId { get; set; }
-    public void SetCorrelationId(Ulid correlationId);
+    public Guid CorrelationId { get; set; }
+    public void SetCorrelationId(Guid correlationId);
     public void SetCorrelationId(string correlationId);
 }
 

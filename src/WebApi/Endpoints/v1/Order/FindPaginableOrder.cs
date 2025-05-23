@@ -15,13 +15,13 @@ public class FindPaginableOrder : BaseOrder
     {
         app
            .MapGet("", async (
-                       [FromHeader] string correlationId,
+                       [FromHeader] Guid correlationId,
                        [FromQuery] int pageSize,
                        [FromQuery] int pageNumber,
                        [FromServices] IMediator mediator,
                        CancellationToken ct) =>
                    {
-                       var input = new FindPaginableOrderInput(pageSize, pageNumber);
+                       var input = new FindPaginableOrderInput(pageNumber, pageSize);
                        input.SetCorrelationId(correlationId);
                         
                        var result = await mediator.SendAsync(input, ct);

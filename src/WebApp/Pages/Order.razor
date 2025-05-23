@@ -1,0 +1,171 @@
+﻿@page "/order"
+@using System.Text.Json.Serialization
+
+@inject IJSRuntime JS
+
+<PageTitle>Pedido de Compra</PageTitle>
+
+<h1>Pedido de Compra</h1>
+
+@{
+    if (!_isNewOrder)
+    {
+        <button class="btn btn-success" @onclick="@IsNewOrder">Novo Pedido</button>
+    }
+}
+
+@{
+    if (_isNewOrder)
+    {
+        <EditForm Model="@_newOrder" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+            
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="form-label">Número do pedido</label>
+                    <InputText class="form-control" @bind-Value="_newOrder.OrderNumber"/>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Data da solicitação</label>
+                    <InputDate class="form-control" @bind-Value="_newOrder.RequestDate"/>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Data prevista para entrega</label>
+                    <InputDate class="form-control" @bind-Value="_newOrder.EstimatedDeliveryDate"/>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Observação do pedido</label>
+                    <InputText class="form-control" @bind-Value="_newOrder.OrderNote"/>
+                </div>
+            </div>
+            
+            <h5>Produtos do Pedido</h5>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in _newOrder.Products)
+                {
+                    <tr>
+                        <td>
+                            <InputText class="form-control" @bind-Value="item.ProductCode"/>
+                        </td>
+                        <td>
+                            <InputText class="form-control" @bind-Value="item.ProductDescription"/>
+                        </td>
+                        <td>
+                            <InputNumber class="form-control" @bind-Value="item.Quantity"/>
+                        </td>
+                        <td>
+                            <InputNumber class="form-control" @bind-Value="item.ProductPrice"/>
+                        </td>
+                        <td>@item.Total.ToString("C")</td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" @onclick="@(() => RemoveItem(item))">
+                                Remover
+                            </button>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+            <button type="button" class="btn btn-outline-primary mb-2" @onclick="AddNewItem">Adicionar Produto</button>
+            
+            <div class="mt-2 mb-3">
+                <strong>Total do Pedido:</strong> @_newOrder.Products.Sum(i => i.ProductPrice * i.Quantity).ToString("C")
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar Pedido</button>
+        </EditForm>
+    }
+}
+
+<table id="ordersTable" class="table table-bordered mt-4">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Número do pedido</th>
+        <th>Data da solicitação</th>
+        <th>Data prevista para entrega</th>
+        <th>Observação do pedido</th>
+        <th>Informação</th>
+    </tr>
+    </thead>
+    <tbody/>
+</table>
+
+<div id="paginationControls" class="d-flex justify-content-center align-items-center mt-2">
+    <button id="prevPage" class="btn btn-outline-primary me-2" disabled>Anterior</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage" class="btn btn-outline-primary ms-2" disabled>Próximo</button>
+</div>
+
+@code {
+
+    private CreateOrderRequest _newOrder = new();
+    private bool _isNewOrder;
+
+    private async Task HandleValidSubmit()
+    {
+        await JS.InvokeVoidAsync("ordersModule.createOrder", _newOrder);
+        
+        _newOrder = new CreateOrderRequest();
+        _isNewOrder = false;
+        StateHasChanged();
+    }
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("ordersModule.initializeOrders");
+        }
+    }
+
+    private void IsNewOrder()
+    {
+        _isNewOrder = true;
+        StateHasChanged();
+    }
+    
+    private void AddNewItem()
+    {
+        _newOrder.Products.Add(new ProductRequest());
+    }
+
+    private void RemoveItem(ProductRequest item)
+    {
+        _newOrder.Products.Remove(item);
+    }
+
+    public class CreateOrderRequest
+    {
+        public string OrderNumber { get; set; } = null!;
+        public DateTime RequestDate { get; set; } = DateTime.Today.AddDays(-1);
+        public DateTime EstimatedDeliveryDate { get; set; } = DateTime.Today;
+        public string OrderNote { get; set; } = null!;
+        public List<ProductRequest> Products { get; set; } = [];
+    }
+
+    public class ProductRequest
+    {
+        public string ProductCode { get; set; } = null!;
+        public int Quantity { get; set; }
+        public string ProductDescription { get; set; } = null!;
+        public decimal ProductPrice { get; set; }
+        
+        [JsonIgnore]
+        public decimal Total => ProductPrice * Quantity;
+    }
+
+}

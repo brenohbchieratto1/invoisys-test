@@ -12,19 +12,16 @@ public class OrderRepository : BaseRepository<Order, Entities.Order>, IOrderRepo
     {
         var database = await GetCollectionAsync(ct).ConfigureAwait(false);
         
-        database = database
-                  .OrderByDescending(x => x.Id)
-                  .ToList();
-
         var safePageNumber = pageNumber <= 0 ? 1 : pageNumber;
         var safePageSize = pageSize     <= 0 ? 10 : pageSize;
-
+        
+        var totalItems = database.Count;
+        
         var items = database
+                   .OrderByDescending(x => x.Id)
                    .Skip((safePageNumber - 1) * safePageSize)
                    .Take(safePageSize)
                    .ToList();
-        
-        var totalItems = items.Count;
 
         var paginable = new PaginableResult<T>()
         {

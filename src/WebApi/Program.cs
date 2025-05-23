@@ -15,13 +15,15 @@ builder.Services
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
-                ValidateAudience = true,
+                ValidateIssuer = false,
+                ValidateAudience = false,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(JwtConfigurations.EncodedSecurityKey)
             };
         });
+
+builder.Services.AddCors();
 
 builder.Services
        .AddAuthorizationBuilder()
@@ -45,5 +47,13 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors(policyBuilder =>
+{
+    policyBuilder
+       .AllowAnyOrigin()
+       .AllowAnyMethod()
+       .AllowAnyHeader();
+});
 
 await app.RunAsync();

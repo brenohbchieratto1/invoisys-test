@@ -7,18 +7,18 @@ public abstract class BaseInput<TInputType> : IRequest
 {
     public string? LogUser { get; set; }
 
-    public Ulid CorrelationId { get; set; }
+    public Guid CorrelationId { get; set; }
     public virtual IdempotenceKey IdempotenceKey => new(CorrelationId, typeof(TInputType).Name);
     public virtual bool IgnoreIdempotence => false;
 
-    public void SetCorrelationId(Ulid correlationId)
+    public void SetCorrelationId(Guid correlationId)
     {
         CorrelationId = correlationId;
     }
     
     public void SetCorrelationId(string correlationId)
     {
-        CorrelationId = Ulid.Parse(correlationId);
+        CorrelationId = Guid.Parse(correlationId);
     }
 
     public void SetLogUser(string? logUser)

@@ -14,7 +14,7 @@ public class FindOrderById : BaseOrder
     {
         app
            .MapGet("{id}", async (
-                        [FromHeader] string correlationId,
+                        [FromHeader] Guid correlationId,
                         [FromRoute] string id,
                         [FromServices] IMediator mediator,
                         CancellationToken ct) =>
