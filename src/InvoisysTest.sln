@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategyo.Results", "ThirdP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategyo.Components.Api", "ThirdParty\Strategyo.Components.Api\Strategyo.Components.Api.csproj", "{A1FF7571-8CFF-4D1A-84A3-D4164B82F886}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{D09E1D9E-2A2A-4EFB-B667-0C12231139D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{A1FF7571-8CFF-4D1A-84A3-D4164B82F886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FF7571-8CFF-4D1A-84A3-D4164B82F886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1FF7571-8CFF-4D1A-84A3-D4164B82F886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09E1D9E-2A2A-4EFB-B667-0C12231139D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09E1D9E-2A2A-4EFB-B667-0C12231139D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09E1D9E-2A2A-4EFB-B667-0C12231139D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09E1D9E-2A2A-4EFB-B667-0C12231139D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6EFADD1A-F803-4BAA-A44D-CF5498AFC736} = {D64FD135-B3E9-4934-922F-79A76874F6CA}
