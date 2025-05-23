@@ -82,10 +82,13 @@
             <button type="button" class="btn btn-outline-primary mb-2" @onclick="AddNewItem">Adicionar Produto</button>
             
             <div class="mt-2 mb-3">
-                <strong>Total do Pedido:</strong> @_newOrder.Products.Sum(i => i.ProductPrice * i.Quantity).ToString("C")
+                <strong>Total do Pedido:</strong> @_newOrder.Products.Sum(i => i.Total).ToString("C")
             </div>
 
-            <button type="submit" class="btn btn-success">Salvar Pedido</button>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Salvar Pedido</button>
+                <button type="button" class="btn btn-secondary" @onclick="CleanFormOrder">Cancelar Pedido</button>
+            </div>
         </EditForm>
     }
 }
@@ -119,9 +122,7 @@
     {
         await JS.InvokeVoidAsync("ordersModule.createOrder", _newOrder);
         
-        _newOrder = new CreateOrderRequest();
-        _isNewOrder = false;
-        StateHasChanged();
+        CleanFormOrder();
     }
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -135,6 +136,13 @@
     private void IsNewOrder()
     {
         _isNewOrder = true;
+        StateHasChanged();
+    }
+    
+    private void CleanFormOrder()
+    {
+        _newOrder = new CreateOrderRequest();
+        _isNewOrder = false;
         StateHasChanged();
     }
     
