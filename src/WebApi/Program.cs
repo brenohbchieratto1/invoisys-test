@@ -35,6 +35,8 @@ builder.Services.AddSwaggerStrategyo("App.InvoiSysTest");
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
