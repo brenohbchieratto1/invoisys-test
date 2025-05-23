@@ -1,5 +1,6 @@
-﻿using App.InvoisysTest.WebApi.Contracts.Order.Request;
-using App.InvoisysTest.WebApi.Contracts.Order.Response;
+﻿using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Input;
+using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Output;
+using App.InvoisysTest.WebApi.Contracts.Order.Request;
 using App.InvoisysTest.WebApi.Endpoints.Base;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -14,12 +15,12 @@ public class CreateOrder : BaseOrder
     {
         app
            .MapPost("", async (
-                        [FromHeader] Ulid correlationId,
+                        [FromHeader] string correlationId,
                         [FromBody] CreateOrderRequest req,
                         [FromServices] IMediator mediator,
                         CancellationToken ct) =>
                     {
-                        var input = req.Adapt<object>();
+                        var input = req.Adapt<CreateOrderInput>();
                         input.SetCorrelationId(correlationId);
                         
                         var result = await mediator.SendAsync(input, ct);
@@ -27,6 +28,7 @@ public class CreateOrder : BaseOrder
                         return Result(result);
                     })
            .WithSwaggerOperation("Cria um pedido de compra", "Responsável por criar um pedido de compra")
-           .WithStatus200OK<CreateOrderResponse>();
+           .WithResultDefaultStatus200OK<CreateOrderOutput>()
+           .WithOpenApi();
     }
 }

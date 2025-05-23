@@ -48,8 +48,11 @@ public static class MinimalApisExtensions
     public static RouteHandlerBuilder WithSwaggerOperation(this RouteHandlerBuilder builder, string summary, string description)
         => builder.WithMetadata(new SwaggerOperationAttribute(summary, description));
 
-    public static RouteHandlerBuilder WithStatus200OK<T>(this RouteHandlerBuilder builder)
+    public static RouteHandlerBuilder WithResultDefaultStatus200OK<T>(this RouteHandlerBuilder builder)
         => builder.Produces<Result<T>>();
+    
+    public static RouteHandlerBuilder WithStatus200OK<T>(this RouteHandlerBuilder builder)
+        => builder.Produces<T>();
     
     public static RouteHandlerBuilder WithStatus400BadRequest<T>(this RouteHandlerBuilder builder)
         => builder.Produces<Result<T>>(StatusCodes.Status400BadRequest);

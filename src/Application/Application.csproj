@@ -6,18 +6,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Mapster" Version="7.4.0" />
         <PackageReference Include="FluentValidation" Version="11.11.0"/>
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.5" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
       <ProjectReference Include="..\ThirdParty\Strategyo.Mediator\Strategyo.Mediator.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="UseCases\Order\FindOrderById\" />
     </ItemGroup>
 </Project>

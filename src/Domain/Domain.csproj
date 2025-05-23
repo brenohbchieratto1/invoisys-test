@@ -9,5 +9,9 @@
       <ProjectReference Include="..\ThirdParty\Strategyo.Results\Strategyo.Results.csproj" />
       <ProjectReference Include="..\ThirdParty\Strategyo\Strategyo.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Mapster" Version="7.4.0" />
+    </ItemGroup>
 
 </Project>

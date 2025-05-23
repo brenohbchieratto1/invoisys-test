@@ -9,10 +9,10 @@ public class CreateOrderInput : BaseInput<CreateOrderInput, CreateOrderOutput>
     public DateTime RequestDate { get; set; }
     public DateTime EstimatedDeliveryDate { get; set; }
     public string OrderNote { get; set; } = null!;
-    public List<Product>? Products { get; set; }
+    public List<ProductInput>? Products { get; set; }
 }
 
-public class Product
+public class ProductInput
 {
     public string ProductCode { get; set; } = null!;
     public int Quantity { get; set; }

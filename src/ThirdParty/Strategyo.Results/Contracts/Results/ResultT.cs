@@ -54,7 +54,7 @@ public partial class Result<TValue> : Result
         Errors = [..errors];
     }
     
-    public TValue? Value { get; }
+    public TValue? Value { get; set; }
 
     public bool TryGetErrorsAndMessages(out List<Error> errors, out List<Message> messages, out TValue data)
     {
