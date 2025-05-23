@@ -1,7 +1,7 @@
-﻿namespace App.InvoisysTest.Infrastructure.Attributes;
+﻿namespace App.InvoiSysTest.Infrastructure.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class DatabasePathAttribute(string filePatch) : Attribute
 {
-    public string FilePath { get; } = $"{filePatch}.txt";
+    public string FilePath { get; } = $"{filePatch}_db.txt";
 }

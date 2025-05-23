@@ -1,13 +1,13 @@
 ﻿using System.Linq.Expressions;
-using App.InvoisysTest.Domain.Entities.Base;
-using App.InvoisysTest.Domain.Interfaces.Base;
-using App.InvoisysTest.Infrastructure.Data.Abstractions;
-using App.InvoisysTest.Infrastructure.Entities.Base;
+using App.InvoiSysTest.Domain.Entities.Base;
+using App.InvoiSysTest.Domain.Interfaces.Base;
+using App.InvoiSysTest.Infrastructure.Data.Abstractions;
+using App.InvoiSysTest.Infrastructure.Entities.Base;
 using Mapster;
 using Strategyo.Extensions.Conversions;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Infrastructure.Data.Repositories.Base;
+namespace App.InvoiSysTest.Infrastructure.Data.Repositories.Base;
 
 public abstract class BaseRepository<TEntity, TCollection> : SetCollection<TCollection>, IBaseRepository<TEntity>
     where TEntity : BaseEntity

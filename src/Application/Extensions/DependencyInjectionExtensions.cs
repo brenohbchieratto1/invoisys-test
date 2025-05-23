@@ -3,7 +3,7 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Strategyo.Mediator.Extensions;
 
-namespace App.InvoisysTest.Application.Extensions;
+namespace App.InvoiSysTest.Application.Extensions;
 
 public static class DependencyInjectionExtensions
 {

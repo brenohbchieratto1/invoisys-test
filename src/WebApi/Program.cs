@@ -1,12 +1,34 @@
-using App.InvoisysTest.Application.Extensions;
-using App.InvoisysTest.Infrastructure.Extensions;
+using App.InvoiSysTest.Application.Extensions;
+using App.InvoiSysTest.Infrastructure.Extensions;
+using App.InvoiSysTest.WebApi.Configurations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Strategyo.Components.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddSwaggerStrategyo("App.InvoisysTest");
+builder.Services
+       .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+       .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(JwtConfigurations.EncodedSecurityKey)
+            };
+        });
+
+builder.Services
+       .AddAuthorizationBuilder()
+       .AddPolicy(nameof(JwtConfigurations.InvoiSysTestRead), policy => policy.RequireRole(JwtConfigurations.InvoiSysTestRead))
+       .AddPolicy(nameof(JwtConfigurations.InvoiSysTestWrite), policy => policy.RequireRole(JwtConfigurations.InvoiSysTestWrite));
+
+builder.Services.AddSwaggerStrategyo("App.InvoiSysTest");
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
@@ -20,5 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 await app.RunAsync();

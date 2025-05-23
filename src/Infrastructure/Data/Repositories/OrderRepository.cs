@@ -1,10 +1,10 @@
-﻿using App.InvoisysTest.Domain.Entities;
-using App.InvoisysTest.Domain.Interfaces;
-using App.InvoisysTest.Infrastructure.Data.Repositories.Base;
+﻿using App.InvoiSysTest.Domain.Entities;
+using App.InvoiSysTest.Domain.Interfaces;
+using App.InvoiSysTest.Infrastructure.Data.Repositories.Base;
 using Mapster;
 using Strategyo.Results.Contracts.Paginable;
 
-namespace App.InvoisysTest.Infrastructure.Data.Repositories;
+namespace App.InvoiSysTest.Infrastructure.Data.Repositories;
 
 public class OrderRepository : BaseRepository<Order, Entities.Order>, IOrderRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace App.InvoisysTest.Domain.Entities.Base;
+﻿namespace App.InvoiSysTest.Domain.Entities.Base;
 
 public class BaseEntity
 {

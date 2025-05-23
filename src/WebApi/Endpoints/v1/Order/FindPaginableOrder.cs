@@ -1,12 +1,13 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder.Input;
-using App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder.Output;
-using App.InvoisysTest.WebApi.Endpoints.Base;
+﻿using App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Input;
+using App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Output;
+using App.InvoiSysTest.WebApi.Configurations;
+using App.InvoiSysTest.WebApi.Endpoints.Base;
 using Microsoft.AspNetCore.Mvc;
 using Strategyo.Components.Api.Extensions;
 using Strategyo.Mediator.Interfaces;
 using Strategyo.Results.Contracts.Paginable;
 
-namespace App.InvoisysTest.WebApi.Endpoints.v1.Order;
+namespace App.InvoiSysTest.WebApi.Endpoints.v1.Order;
 
 public class FindPaginableOrder : BaseOrder
 {
@@ -28,6 +29,8 @@ public class FindPaginableOrder : BaseOrder
                        return Result(result);
                    })
            .WithSwaggerOperation("Busca paginada dos pedidos de compra", "Responsável por buscar com paginação os pedidos de compra")
-           .WithResultDefaultStatus200OK<PaginableResult<PaginableOutput>>();
+           .WithResultDefaultStatus200OK<PaginableResult<PaginableOutput>>()
+           .WithOpenApi()
+           .RequireAuthorization(nameof(JwtConfigurations.InvoiSysTestRead));
     }
 }

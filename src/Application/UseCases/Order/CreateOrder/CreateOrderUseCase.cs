@@ -1,14 +1,14 @@
-﻿using App.InvoisysTest.Application.Extensions;
-using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Input;
-using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Output;
-using App.InvoisysTest.Domain.Interfaces;
+﻿using App.InvoiSysTest.Application.Extensions;
+using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Input;
+using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Output;
+using App.InvoiSysTest.Domain.Interfaces;
 using FluentValidation;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Application.UseCases.Order.CreateOrder;
+namespace App.InvoiSysTest.Application.UseCases.Order.CreateOrder;
 
 public class CreateOrderUseCase(
     IOrderRepository orderRepository,

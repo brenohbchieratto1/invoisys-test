@@ -1,11 +1,12 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.FindOrderById.Input;
-using App.InvoisysTest.Application.UseCases.Order.FindOrderById.Output;
-using App.InvoisysTest.WebApi.Endpoints.Base;
+﻿using App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Input;
+using App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Output;
+using App.InvoiSysTest.WebApi.Configurations;
+using App.InvoiSysTest.WebApi.Endpoints.Base;
 using Microsoft.AspNetCore.Mvc;
 using Strategyo.Components.Api.Extensions;
 using Strategyo.Mediator.Interfaces;
 
-namespace App.InvoisysTest.WebApi.Endpoints.v1.Order;
+namespace App.InvoiSysTest.WebApi.Endpoints.v1.Order;
 
 public class FindOrderById : BaseOrder
 {
@@ -26,6 +27,8 @@ public class FindOrderById : BaseOrder
                         return Result(result);
                     })
            .WithSwaggerOperation("Busca um pedido de compra", "Responsável por buscar um pedido de compra")
-           .WithResultDefaultStatus200OK<FindOrderByIdOutput>();
+           .WithResultDefaultStatus200OK<FindOrderByIdOutput>()
+           .WithOpenApi()
+           .RequireAuthorization(nameof(JwtConfigurations.InvoiSysTestRead));
     }
 }

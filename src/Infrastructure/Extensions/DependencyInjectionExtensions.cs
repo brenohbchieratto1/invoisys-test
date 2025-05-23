@@ -1,8 +1,8 @@
-﻿using App.InvoisysTest.Domain.Interfaces;
-using App.InvoisysTest.Infrastructure.Data.Repositories;
+﻿using App.InvoiSysTest.Domain.Interfaces;
+using App.InvoiSysTest.Infrastructure.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace App.InvoisysTest.Infrastructure.Extensions;
+namespace App.InvoiSysTest.Infrastructure.Extensions;
 
 public static class DependencyInjectionExtensions
 {

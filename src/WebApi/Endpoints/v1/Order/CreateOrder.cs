@@ -1,13 +1,14 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Input;
-using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Output;
-using App.InvoisysTest.WebApi.Contracts.Order.Request;
-using App.InvoisysTest.WebApi.Endpoints.Base;
+﻿using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Input;
+using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Output;
+using App.InvoiSysTest.WebApi.Configurations;
+using App.InvoiSysTest.WebApi.Contracts.Order.Request;
+using App.InvoiSysTest.WebApi.Endpoints.Base;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Strategyo.Components.Api.Extensions;
 using Strategyo.Mediator.Interfaces;
 
-namespace App.InvoisysTest.WebApi.Endpoints.v1.Order;
+namespace App.InvoiSysTest.WebApi.Endpoints.v1.Order;
 
 public class CreateOrder : BaseOrder
 {
@@ -29,6 +30,7 @@ public class CreateOrder : BaseOrder
                     })
            .WithSwaggerOperation("Cria um pedido de compra", "Responsável por criar um pedido de compra")
            .WithResultDefaultStatus200OK<CreateOrderOutput>()
-           .WithOpenApi();
+           .WithOpenApi()
+           .RequireAuthorization(nameof(JwtConfigurations.InvoiSysTestWrite));
     }
 }

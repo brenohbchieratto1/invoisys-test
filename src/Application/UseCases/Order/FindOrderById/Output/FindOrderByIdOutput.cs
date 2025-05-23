@@ -1,4 +1,4 @@
-﻿namespace App.InvoisysTest.Application.UseCases.Order.FindOrderById.Output;
+﻿namespace App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Output;
 
 public class FindOrderByIdOutput
 {

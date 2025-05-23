@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyName>App.InvoisysTest.Domain</AssemblyName>
-        <RootNamespace>App.InvoisysTest.Domain</RootNamespace>
+        <AssemblyName>App.InvoiSysTest.Domain</AssemblyName>
+        <RootNamespace>App.InvoiSysTest.Domain</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

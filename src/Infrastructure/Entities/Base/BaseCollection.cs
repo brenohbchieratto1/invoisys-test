@@ -1,4 +1,4 @@
-﻿namespace App.InvoisysTest.Infrastructure.Entities.Base;
+﻿namespace App.InvoiSysTest.Infrastructure.Entities.Base;
 
 public class BaseCollection
 {

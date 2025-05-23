@@ -1,7 +1,7 @@
-﻿using App.InvoisysTest.Infrastructure.Attributes;
-using App.InvoisysTest.Infrastructure.Entities.Base;
+﻿using App.InvoiSysTest.Infrastructure.Attributes;
+using App.InvoiSysTest.Infrastructure.Entities.Base;
 
-namespace App.InvoisysTest.Infrastructure.Entities;
+namespace App.InvoiSysTest.Infrastructure.Entities;
 
 [DatabasePath("Order")]
 public class Order : BaseCollection

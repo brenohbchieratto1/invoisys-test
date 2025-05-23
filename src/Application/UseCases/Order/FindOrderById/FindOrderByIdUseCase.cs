@@ -1,12 +1,12 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.FindOrderById.Input;
-using App.InvoisysTest.Application.UseCases.Order.FindOrderById.Output;
-using App.InvoisysTest.Domain.Interfaces;
+﻿using App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Input;
+using App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Output;
+using App.InvoiSysTest.Domain.Interfaces;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Application.UseCases.Order.FindOrderById;
+namespace App.InvoiSysTest.Application.UseCases.Order.FindOrderById;
 
 public class FindOrderByIdUseCase(
     IOrderRepository  orderRepository,

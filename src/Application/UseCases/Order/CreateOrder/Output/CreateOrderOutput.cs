@@ -1,4 +1,4 @@
-﻿namespace App.InvoisysTest.Application.UseCases.Order.CreateOrder.Output;
+﻿namespace App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Output;
 
 public class CreateOrderOutput
 {

@@ -1,6 +1,6 @@
-﻿using App.InvoisysTest.Domain.Entities.Base;
+﻿using App.InvoiSysTest.Domain.Entities.Base;
 
-namespace App.InvoisysTest.Domain.Entities;
+namespace App.InvoiSysTest.Domain.Entities;
 
 public class Order : BaseEntity
 {

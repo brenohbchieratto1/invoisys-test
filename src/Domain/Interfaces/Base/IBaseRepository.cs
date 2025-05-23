@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
-using App.InvoisysTest.Domain.Entities.Base;
+using App.InvoiSysTest.Domain.Entities.Base;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Domain.Interfaces.Base;
+namespace App.InvoiSysTest.Domain.Interfaces.Base;
 
 public interface IBaseRepository<TEntity>
     where TEntity : BaseEntity

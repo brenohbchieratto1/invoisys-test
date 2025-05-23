@@ -1,12 +1,12 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder.Input;
-using App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder.Output;
-using App.InvoisysTest.Domain.Interfaces;
+﻿using App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Input;
+using App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Output;
+using App.InvoiSysTest.Domain.Interfaces;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder;
+namespace App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder;
 
 public class FindPaginableOrderUseCaseCreateOrderUseCase(
     IOrderRepository orderRepository,

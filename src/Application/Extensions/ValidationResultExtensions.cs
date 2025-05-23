@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using Strategyo.Results.Contracts.Results;
 
-namespace App.InvoisysTest.Application.Extensions;
+namespace App.InvoiSysTest.Application.Extensions;
 
 public static class ValidationResultExtensions
 {

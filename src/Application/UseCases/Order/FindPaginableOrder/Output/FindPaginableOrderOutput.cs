@@ -1,6 +1,6 @@
 ﻿using Strategyo.Results.Contracts.Paginable;
 
-namespace App.InvoisysTest.Application.UseCases.Order.FindPaginableOrder.Output;
+namespace App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Output;
 
 public class FindPaginableOrderOutput : PaginableResult<PaginableOutput>;
 

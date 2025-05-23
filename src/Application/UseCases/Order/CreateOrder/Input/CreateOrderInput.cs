@@ -1,7 +1,7 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Output;
+﻿using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Output;
 using Strategyo.Mediator.Entities.Base;
 
-namespace App.InvoisysTest.Application.UseCases.Order.CreateOrder.Input;
+namespace App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Input;
 
 public class CreateOrderInput : BaseInput<CreateOrderInput, CreateOrderOutput>
 {

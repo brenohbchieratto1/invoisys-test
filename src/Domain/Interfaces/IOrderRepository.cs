@@ -1,8 +1,8 @@
-﻿using App.InvoisysTest.Domain.Entities;
-using App.InvoisysTest.Domain.Interfaces.Base;
+﻿using App.InvoiSysTest.Domain.Entities;
+using App.InvoiSysTest.Domain.Interfaces.Base;
 using Strategyo.Results.Contracts.Paginable;
 
-namespace App.InvoisysTest.Domain.Interfaces;
+namespace App.InvoiSysTest.Domain.Interfaces;
 
 public interface IOrderRepository : IBaseRepository<Order>
 {

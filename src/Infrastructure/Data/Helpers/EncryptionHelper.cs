@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace App.InvoisysTest.Infrastructure.Data.Helpers;
+namespace App.InvoiSysTest.Infrastructure.Data.Helpers;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public static class EncryptionHelper

@@ -1,7 +1,7 @@
-﻿using App.InvoisysTest.Application.UseCases.Order.CreateOrder.Input;
+﻿using App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Input;
 using FluentValidation;
 
-namespace App.InvoisysTest.Application.UseCases.Order.CreateOrder.Validator;
+namespace App.InvoiSysTest.Application.UseCases.Order.CreateOrder.Validator;
 
 public class ProductValidator : AbstractValidator<ProductInput>
 {

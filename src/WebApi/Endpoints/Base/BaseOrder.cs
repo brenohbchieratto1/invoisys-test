@@ -1,6 +1,6 @@
 ﻿using Strategyo.Components.Api.Configurations;
 
-namespace App.InvoisysTest.WebApi.Endpoints.Base;
+namespace App.InvoiSysTest.WebApi.Endpoints.Base;
 
 public abstract class BaseOrder : BaseEndpoint
 {

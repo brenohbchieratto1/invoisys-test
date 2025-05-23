@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using App.InvoisysTest.Infrastructure.Attributes;
-using App.InvoisysTest.Infrastructure.Data.Helpers;
-using App.InvoisysTest.Infrastructure.Entities.Base;
+using App.InvoiSysTest.Infrastructure.Attributes;
+using App.InvoiSysTest.Infrastructure.Data.Helpers;
+using App.InvoiSysTest.Infrastructure.Entities.Base;
 using Strategyo.Extensions.Conversions;
 
-namespace App.InvoisysTest.Infrastructure.Data.Abstractions;
+namespace App.InvoiSysTest.Infrastructure.Data.Abstractions;
 
 public abstract class SetCollection<TCollection> where TCollection : BaseCollection
 {
