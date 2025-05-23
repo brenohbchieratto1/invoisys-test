@@ -5,6 +5,7 @@ using App.InvoiSysTest.Domain.Interfaces;
 using FluentValidation;
 using Mapster;
 using Microsoft.Extensions.Logging;
+using Strategyo.Mediator.Interfaces;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
@@ -14,13 +15,13 @@ public class CreateOrderUseCase(
     IOrderRepository orderRepository,
     IValidator<CreateOrderInput> inputValidator,
     ILogger<CreateOrderUseCase> logger) :
-    RequestHandlerWrapperImpl<CreateOrderInput, CreateOrderOutput>
+    IRequestHandler<CreateOrderInput, CreateOrderOutput>
 {
     public async Task<Result<CreateOrderOutput>> HandleAsync(CreateOrderInput request, CancellationToken cancellationToken = default)
     {
         try
         {
-            var validator = await inputValidator.ValidateAsync(request, cancellationToken);
+            var validator = await inputValidator.ValidateAsync(request, cancellationToken).ConfigureAwait(false);
 
             if (!validator.IsValid)
             {
@@ -30,12 +31,15 @@ public class CreateOrderUseCase(
             var entity = request.Adapt<Domain.Entities.Order>();
             entity.SetCreatedAt(request.LogUser);
 
-            await orderRepository.AddAsync(entity, cancellationToken);
+            await orderRepository.AddAsync(entity, cancellationToken).ConfigureAwait(false);
 
-            Response.CorrelationId = request.CorrelationId;
-            Response.OrderId = entity.Id;
+            var response = new CreateOrderOutput
+            {
+                CorrelationId = request.CorrelationId,
+                OrderId = entity.Id,
+            };
 
-            return Response;
+            return response;
         }
         catch (Exception e)
         {

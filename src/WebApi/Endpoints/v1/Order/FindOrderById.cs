@@ -32,7 +32,7 @@ public class FindOrderById : BaseOrder
                         var input = new FindOrderByIdInput(id);
                         input.SetCorrelationId(correlationId);
                         
-                        var result = await mediator.SendAsync(input, ct);
+                        var result = await mediator.SendAsync(input, ct).ConfigureAwait(false);
 
                         var cacheEntryOptions = new MemoryCacheEntryOptions()
                            .SetSlidingExpiration(TimeSpan.FromMinutes(10));

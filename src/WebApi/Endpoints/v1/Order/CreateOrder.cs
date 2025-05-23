@@ -24,7 +24,7 @@ public class CreateOrder : BaseOrder
                         var input = req.Adapt<CreateOrderInput>();
                         input.SetCorrelationId(correlationId);
                         
-                        var result = await mediator.SendAsync(input, ct);
+                        var result = await mediator.SendAsync(input, ct).ConfigureAwait(false);
 
                         return Result(result);
                     })

@@ -24,7 +24,7 @@ public class FindPaginableOrder : BaseOrder
                        var input = new FindPaginableOrderInput(pageNumber, pageSize);
                        input.SetCorrelationId(correlationId);
                         
-                       var result = await mediator.SendAsync(input, ct);
+                       var result = await mediator.SendAsync(input, ct).ConfigureAwait(false);
 
                        return Result(result);
                    })

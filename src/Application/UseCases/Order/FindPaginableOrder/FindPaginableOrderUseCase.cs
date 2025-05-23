@@ -3,15 +3,16 @@ using App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder.Output;
 using App.InvoiSysTest.Domain.Interfaces;
 using Mapster;
 using Microsoft.Extensions.Logging;
+using Strategyo.Mediator.Interfaces;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
 namespace App.InvoiSysTest.Application.UseCases.Order.FindPaginableOrder;
 
-public class FindPaginableOrderUseCaseCreateOrderUseCase(
+public class FindPaginableOrderUseCase(
     IOrderRepository orderRepository,
-    ILogger<FindPaginableOrderUseCaseCreateOrderUseCase> logger) :
-    RequestHandlerWrapperImpl<FindPaginableOrderInput, FindPaginableOrderOutput>
+    ILogger<FindPaginableOrderUseCase> logger) :
+    IRequestHandler<FindPaginableOrderInput, FindPaginableOrderOutput>
 {
     public async Task<Result<FindPaginableOrderOutput>> HandleAsync(FindPaginableOrderInput request, CancellationToken cancellationToken = default)
     {
@@ -21,9 +22,9 @@ public class FindPaginableOrderUseCaseCreateOrderUseCase(
                               .PaginableAsync<PaginableOutput>(request.PageNumber, request.PageSize, cancellationToken)
                               .ConfigureAwait(false);
 
-            Response = result.Adapt<FindPaginableOrderOutput>();
+            var response = result.Adapt<FindPaginableOrderOutput>();
 
-            return Response;
+            return response;
         }
         catch (Exception e)
         {

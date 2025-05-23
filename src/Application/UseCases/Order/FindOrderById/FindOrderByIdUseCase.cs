@@ -3,6 +3,7 @@ using App.InvoiSysTest.Application.UseCases.Order.FindOrderById.Output;
 using App.InvoiSysTest.Domain.Interfaces;
 using Mapster;
 using Microsoft.Extensions.Logging;
+using Strategyo.Mediator.Interfaces;
 using Strategyo.Mediator.Wrappers;
 using Strategyo.Results.Contracts.Results;
 
@@ -11,13 +12,13 @@ namespace App.InvoiSysTest.Application.UseCases.Order.FindOrderById;
 public class FindOrderByIdUseCase(
     IOrderRepository  orderRepository,
     ILogger<FindOrderByIdUseCase> logger) : 
-    RequestHandlerWrapperImpl<FindOrderByIdInput, FindOrderByIdOutput>
+    IRequestHandler<FindOrderByIdInput, FindOrderByIdOutput>
 {
     public async Task<Result<FindOrderByIdOutput>> HandleAsync(FindOrderByIdInput request, CancellationToken cancellationToken = default)
     {
         try
         {
-            var entity = await orderRepository.FindOneAsync(request.Id, cancellationToken);
+            var entity = await orderRepository.FindOneAsync(request.Id, cancellationToken).ConfigureAwait(false);
 
             if (entity.TryGetErrorsAndMessages(out var errors, out var messages, out var order))
             {
@@ -28,9 +29,9 @@ public class FindOrderByIdUseCase(
                 return (errors, messages);
             }
 
-            Response = order.Adapt<FindOrderByIdOutput>();
+            var response = order.Adapt<FindOrderByIdOutput>();
             
-            return Response;
+            return response;
         }
         catch (Exception e)
         {

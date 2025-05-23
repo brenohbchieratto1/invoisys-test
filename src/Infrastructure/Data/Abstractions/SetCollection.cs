@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using App.InvoiSysTest.Infrastructure.Attributes;
 using App.InvoiSysTest.Infrastructure.Data.Helpers;
 using App.InvoiSysTest.Infrastructure.Entities.Base;
@@ -6,6 +7,7 @@ using Strategyo.Extensions.Conversions;
 
 namespace App.InvoiSysTest.Infrastructure.Data.Abstractions;
 
+[ExcludeFromCodeCoverage]
 public abstract class SetCollection<TCollection> where TCollection : BaseCollection
 {
     private readonly string _filePath;
@@ -36,7 +38,7 @@ public abstract class SetCollection<TCollection> where TCollection : BaseCollect
         {
             var encryptContent = await File.ReadAllTextAsync(_filePath, ct).ConfigureAwait(false);
 
-            var decryptContent = encryptContent.Decrypt();
+            var decryptContent = await encryptContent.DecryptAsync().ConfigureAwait(false);
 
             var entities = decryptContent.FromJson<List<TCollection>>();
 
@@ -54,7 +56,7 @@ public abstract class SetCollection<TCollection> where TCollection : BaseCollect
         {
             var decryptContent = values.ToJson();
             
-            var encryptContent = decryptContent?.Encrypt();
+            var encryptContent = await decryptContent!.EncryptAsync().ConfigureAwait(false);
             
             await File.WriteAllTextAsync(_filePath, encryptContent, ct).ConfigureAwait(false);
 
